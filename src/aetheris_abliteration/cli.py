@@ -42,6 +42,11 @@ def _parser() -> argparse.ArgumentParser:
     verify.add_argument("--output", required=True)
     verify.add_argument("--expected-manifest-sha256", default=None)
 
+    catalog = subs.add_parser("verify-artifacts", help="Verify local GGUF catalog against recorded hashes")
+    catalog.add_argument("--catalog", required=True)
+    catalog.add_argument("--root", required=True)
+    catalog.add_argument("--expected-catalog-sha256", default=None)
+
     export = subs.add_parser("export-gguf", help="Run an explicitly supplied trusted llama.cpp converter")
     export.add_argument("--input", required=True)
     export.add_argument("--converter", required=True)
@@ -88,6 +93,14 @@ def main(argv: Sequence[str] | None = None) -> int:
         verify_manifest(Path(args.output), expected_manifest_sha256=args.expected_manifest_sha256)
         print(json.dumps({"verified": True, "output": args.output}))
         return 0
+    if args.command == "verify-artifacts":
+        from .artifact_catalog import verify_catalog
+
+        report = verify_catalog(
+            Path(args.catalog), Path(args.root), expected_sha256=args.expected_catalog_sha256,
+        )
+        print(json.dumps(report, ensure_ascii=False, indent=2))
+        return 0 if report["verified"] else 2
     if args.command == "export-gguf":
         source = Path(args.input).resolve()
         converter = Path(args.converter).resolve()

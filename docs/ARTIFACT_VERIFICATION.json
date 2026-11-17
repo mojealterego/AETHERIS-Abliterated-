@@ -1,0 +1,36 @@
+{
+  "schema": "aetheris.artifact-verification.v1",
+  "catalog_sha256": "2c728ed61d7e51542028eca5f397d16a00029faaf137adb177ebc71f2486848a",
+  "catalog_digest_pinned": false,
+  "verified": true,
+  "production_approved": false,
+  "artifacts": [
+    {
+      "filename": "aetheris-qwen3-0.6b-research-Q4_K_M.gguf",
+      "status": "VERIFIED",
+      "sha256": "b4cae1930f3a8f74369c77e341ec6d5d0821867d9c08316547af4a9f82073603",
+      "size_bytes": 396704736,
+      "gguf_version": 3,
+      "tensor_count": 310,
+      "metadata_count": 34
+    },
+    {
+      "filename": "aetheris-qwen3-0.6b-research-Q8_0.gguf",
+      "status": "VERIFIED",
+      "sha256": "31056228308eb41bad6c58ad5ad6487385a09c777236be6f7635eeaf1d883435",
+      "size_bytes": 639447008,
+      "gguf_version": 3,
+      "tensor_count": 310,
+      "metadata_count": 34
+    },
+    {
+      "filename": "aetheris-qwen3-0.6b-research-f16.gguf",
+      "status": "VERIFIED",
+      "sha256": "7c5b337606378b18171060036112f8f95c92723a3bba9babc3cbda4c063ca1d3",
+      "size_bytes": 1198182368,
+      "gguf_version": 3,
+      "tensor_count": 310,
+      "metadata_count": 34
+    }
+  ]
+}

@@ -1,0 +1,45 @@
+{
+  "schema": "aetheris.gguf-structural-audit.v1",
+  "parser": "llama.cpp gguf-py",
+  "parser_commit": "18b74fa41dcac1f55ae1371fe58153f7225941f6",
+  "results": [
+    {
+      "filename": "aetheris-qwen3-0.6b-research-f16.gguf",
+      "architecture": "qwen3",
+      "tensor_count": 310,
+      "tensor_types": {
+        "F16": 197,
+        "F32": 113
+      },
+      "shape_parity": true,
+      "nonoverlapping_inbounds_tensor_ranges": true,
+      "file_size": 1198182368
+    },
+    {
+      "filename": "aetheris-qwen3-0.6b-research-Q4_K_M.gguf",
+      "architecture": "qwen3",
+      "tensor_count": 310,
+      "tensor_types": {
+        "F32": 113,
+        "Q4_K": 168,
+        "Q6_K": 29
+      },
+      "shape_parity": true,
+      "nonoverlapping_inbounds_tensor_ranges": true,
+      "file_size": 396704736
+    },
+    {
+      "filename": "aetheris-qwen3-0.6b-research-Q8_0.gguf",
+      "architecture": "qwen3",
+      "tensor_count": 310,
+      "tensor_types": {
+        "F32": 113,
+        "Q8_0": 197
+      },
+      "shape_parity": true,
+      "nonoverlapping_inbounds_tensor_ranges": true,
+      "file_size": 639447008
+    }
+  ],
+  "quality_certified": false
+}

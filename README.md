@@ -1,4 +1,4 @@
-# AETHERIS Ω Abliteration Lab — v0.3.1
+# AETHERIS Ω Abliteration Lab — v0.3.2
 
 A local, auditable Qwen3 refusal-direction research and rank-one weight-editing toolkit designed to fit **AETHERIS OmniFlow Ω** Dual-GGUF planning. It does not depend on ComfyUI and does not replace OmniFlow's independent Policy Engine.
 
@@ -89,3 +89,11 @@ See docs/RESEARCH_AUDIT_v0.3.md. The Qwen3-0.6B research weights remain unchange
 ## Release 0.3.1 — Trust and artifact integrity
 
 Manifest verification rejects unsupported production status, license, malformed provenance and unsafe policy integration metadata. An independently trusted SHA-256 of the manifest can be supplied via the verify command. Without a trusted digest, consistency checks do not establish publisher identity. See docs/ARTIFACTS.json for the actual model artifact sizes and full hashes completed so far. F16 full hashing remains pending. This is a toolkit update, not a new training run.
+
+## Release 0.3.2 — Artifact verification
+
+All three GGUF artifact SHA-256 values are recorded in docs/ARTIFACTS.json. On Linux/Termux, run the following command against a directory containing the files. A trusted digest of the catalog can optionally pin the catalog bytes. Verification checks file size, header, SHA-256 and file identity; it does not certify model quality or publisher identity.
+
+```bash
+aetheris-abliterate verify-artifacts --catalog docs/ARTIFACTS.json --root /path/to/gguf
+```

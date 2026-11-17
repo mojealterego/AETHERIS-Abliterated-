@@ -1,6 +1,6 @@
 {
   "schema": "aetheris.artifact-catalog.v1",
-  "toolkit_version": "0.3.1",
+  "toolkit_version": "0.3.2",
   "model_status": "RESEARCH_ONLY",
   "production_approved": false,
   "base_model": "Qwen/Qwen3-0.6B",
@@ -23,13 +23,12 @@
     {
       "filename": "aetheris-qwen3-0.6b-research-f16.gguf",
       "size_bytes": 1198182368,
-      "sha256": null,
-      "integrity_status": "FULL_SHA256_PENDING"
+      "sha256": "7c5b337606378b18171060036112f8f95c92723a3bba9babc3cbda4c063ca1d3",
+      "integrity_status": "SHA256_COMPUTED"
     }
   ],
   "limitations": [
-    "This is a partial artifact catalog, not a signed attestation or proof of model quality.",
-    "The F16 full hash was not completed within the runtime limit.",
-    "Weights are stored outside Git; the model was not retrained in this toolkit release."
+    "Catalog records measured SHA-256 values; it is not a signature or proof of model quality.",
+    "Weights are stored outside Git; no retraining in this toolkit release."
   ]
 }
