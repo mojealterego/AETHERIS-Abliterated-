@@ -1,0 +1,11 @@
+{
+  "schema": "aetheris.weight-integrity.v1",
+  "source_tensor_count": 311,
+  "modified_tensor_count": 310,
+  "edited_tensors": 44,
+  "protected_tensors": 254,
+  "unexpected_changes": 0,
+  "tied_alias_verified": true,
+  "status": "STRUCTURE_VERIFIED",
+  "content_effectiveness": "NOT_TESTED"
+}

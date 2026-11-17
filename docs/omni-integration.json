@@ -1,0 +1,35 @@
+{
+  "schema": "aetheris.omniflow.adapter.v1",
+  "node": {
+    "op_id": "L100_AbliteratedPrimaryGGUF",
+    "op_version": "0.1.0",
+    "family": "LANGUAGE_PLANNING",
+    "mode": "PURE_SEEDED",
+    "trust_level": "T1_VERIFIED_PLUGIN",
+    "input_ports": {
+      "prompt_spec": "PromptSpec"
+    },
+    "output_ports": {
+      "completion": "PromptSpec"
+    },
+    "requires_model_manifest": true,
+    "required_model_role": "PRIMARY_GGUF"
+  },
+  "constraints": {
+    "external_egress": false,
+    "consent_verified_by_policy_engine": true,
+    "age_gate_required": true,
+    "deny_unverified_models": true,
+    "deny_publishing_without_qc": true
+  },
+  "execution": {
+    "engine": "llama.cpp",
+    "artifact_format": "GGUF",
+    "transport": "UnixDomainSocket",
+    "tenant_isolation": "per_tenant"
+  },
+  "auxiliary_model": {
+    "role": "AUXILIARY_GGUF",
+    "purpose": "schema validation, policy checks, provenance audit"
+  }
+}
