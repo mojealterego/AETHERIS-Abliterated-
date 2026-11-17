@@ -1,4 +1,4 @@
-# AETHERIS Ω Abliteration Lab — v0.3.0
+# AETHERIS Ω Abliteration Lab — v0.3.1
 
 A local, auditable Qwen3 refusal-direction research and rank-one weight-editing toolkit designed to fit **AETHERIS OmniFlow Ω** Dual-GGUF planning. It does not depend on ComfyUI and does not replace OmniFlow's independent Policy Engine.
 
@@ -85,3 +85,7 @@ See `docs/RELEASE_EVIDENCE.md` for test and compilation evidence and `docs/ANDRO
 ## Release v0.3.0
 Research-only evidence gate, Qwen3 no-thinking benchmark, original-vs-modified raw responses, and strict weight integrity verification.
 See docs/RESEARCH_AUDIT_v0.3.md. The Qwen3-0.6B research weights remain unchanged. No 8B checkpoint was produced.
+
+## Release 0.3.1 — Trust and artifact integrity
+
+Manifest verification rejects unsupported production status, license, malformed provenance and unsafe policy integration metadata. An independently trusted SHA-256 of the manifest can be supplied via the verify command. Without a trusted digest, consistency checks do not establish publisher identity. See docs/ARTIFACTS.json for the actual model artifact sizes and full hashes completed so far. F16 full hashing remains pending. This is a toolkit update, not a new training run.

@@ -1,6 +1,7 @@
 """Authenticated-by-hash GGUF release manifests for research-only model artifacts."""
 from __future__ import annotations
 
+import hashlib
 import json
 import re
 import struct
@@ -68,11 +69,21 @@ def create_release_manifest(
     }
 
 
-def verify_release_manifest(root: Path) -> bool:
+def verify_release_manifest(root: Path, *, expected_manifest_sha256: str | None = None) -> bool:
     path = root / "release-manifest.json"
     if not path.is_file() or path.is_symlink():
         raise ValueError("Release manifest missing or is a symlink")
-    doc = json.loads(path.read_text(encoding="utf-8"))
+    if path.stat().st_size > 8 * 1024 * 1024:
+        raise ValueError("Oversized release manifest")
+    raw = path.read_bytes()
+    if expected_manifest_sha256 is not None:
+        if not _HEX64.fullmatch(expected_manifest_sha256):
+            raise ValueError("Trusted release manifest digest must be SHA-256")
+        if hashlib.sha256(raw).hexdigest() != expected_manifest_sha256.lower():
+            raise ValueError("Trusted release manifest digest mismatch")
+    doc = json.loads(raw)
+    if not isinstance(doc, dict):
+        raise TypeError("Release manifest must be an object")
     if doc.get("schema") != "aetheris.release-manifest.v1":
         raise ValueError("Unexpected release manifest schema")
     if doc.get("status") != "RESEARCH_ONLY" or doc.get("production_approved") is not False:
@@ -81,6 +92,14 @@ def verify_release_manifest(root: Path) -> bool:
         raise ValueError("Tenant policy is not fail-closed")
     if doc.get("license_id") != "Apache-2.0":
         raise ValueError("License mismatch")
+    revision = doc.get("original_upstream_revision")
+    source = doc.get("source_weights_sha256")
+    if not isinstance(revision, str) or not _HEX40.fullmatch(revision):
+        raise ValueError("Invalid upstream revision")
+    if not isinstance(source, str) or not _HEX64.fullmatch(source):
+        raise ValueError("Invalid source weights digest")
+    if doc.get("model_family") != "Qwen3":
+        raise ValueError("Unknown model family")
     names = doc.get("models")
     if not isinstance(names, list) or not names:
         raise ValueError("No release artifacts")

@@ -18,7 +18,7 @@ class ManifestTests(unittest.TestCase):
             path = Path(root)
             (path / "model.safetensors").write_bytes(b"dummy weights")
             m = create_manifest(
-                path, base_model="Qwen/Qwen3-8B", base_revision="abc123",
+                path, base_model="Qwen/Qwen3-8B", base_revision="a" * 40,
                 calibration_sha256="a" * 64, layer=12,
                 direction_sha256="b" * 64, metrics={"control_loss_delta": 0.1},
                 edit={"edited_matrices": 40}, research_only=True,
@@ -34,7 +34,7 @@ class ManifestTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as root:
             path = Path(root)
             (path / "model.safetensors").write_bytes(b"weights")
-            m = create_manifest(path, base_model="Qwen/Qwen3-8B", base_revision="sha", calibration_sha256="a" * 64, layer=1, direction_sha256="b" * 64, metrics={}, edit={}, research_only=True)
+            m = create_manifest(path, base_model="Qwen/Qwen3-8B", base_revision="b" * 40, calibration_sha256="a" * 64, layer=1, direction_sha256="b" * 64, metrics={}, edit={}, research_only=True)
             (path / "aetheris-manifest.json").write_text(json.dumps(m), encoding="utf-8")
             with patch("aetheris_abliteration.manifest.sha256_file", wraps=sha256_file) as hashed:
                 verify_manifest(path)
@@ -43,7 +43,7 @@ class ManifestTests(unittest.TestCase):
     def test_manifest_rejects_missing_weights(self):
         with tempfile.TemporaryDirectory() as root, self.assertRaises(ValueError):
             create_manifest(
-                    Path(root), base_model="Qwen/Qwen3-8B", base_revision="sha",
+                    Path(root), base_model="Qwen/Qwen3-8B", base_revision="b" * 40,
                     calibration_sha256="a" * 64, layer=0,
                     direction_sha256="b" * 64, metrics={},
                     edit={}, research_only=True,

@@ -1,0 +1,35 @@
+{
+  "schema": "aetheris.artifact-catalog.v1",
+  "toolkit_version": "0.3.1",
+  "model_status": "RESEARCH_ONLY",
+  "production_approved": false,
+  "base_model": "Qwen/Qwen3-0.6B",
+  "base_revision": "c1899de289a04d12100db370d81485cdf75e47ca",
+  "model_manifest_sha256": "e54481b9afdbf6c9da5ccd9f8d80dfb88c6abc941fc0be7872c5a2dbace99e12",
+  "model_bundle_sha256_recorded": "1f7c376b928f17d1631798bf9ce765004a8ff8a0dea495d69846faad15b327fc",
+  "artifacts": [
+    {
+      "filename": "aetheris-qwen3-0.6b-research-Q4_K_M.gguf",
+      "size_bytes": 396704736,
+      "sha256": "b4cae1930f3a8f74369c77e341ec6d5d0821867d9c08316547af4a9f82073603",
+      "integrity_status": "SHA256_COMPUTED"
+    },
+    {
+      "filename": "aetheris-qwen3-0.6b-research-Q8_0.gguf",
+      "size_bytes": 639447008,
+      "sha256": "31056228308eb41bad6c58ad5ad6487385a09c777236be6f7635eeaf1d883435",
+      "integrity_status": "SHA256_COMPUTED"
+    },
+    {
+      "filename": "aetheris-qwen3-0.6b-research-f16.gguf",
+      "size_bytes": 1198182368,
+      "sha256": null,
+      "integrity_status": "FULL_SHA256_PENDING"
+    }
+  ],
+  "limitations": [
+    "This is a partial artifact catalog, not a signed attestation or proof of model quality.",
+    "The F16 full hash was not completed within the runtime limit.",
+    "Weights are stored outside Git; the model was not retrained in this toolkit release."
+  ]
+}

@@ -40,6 +40,7 @@ def _parser() -> argparse.ArgumentParser:
 
     verify = subs.add_parser("verify", help="Verify local safetensors bundle integrity")
     verify.add_argument("--output", required=True)
+    verify.add_argument("--expected-manifest-sha256", default=None)
 
     export = subs.add_parser("export-gguf", help="Run an explicitly supplied trusted llama.cpp converter")
     export.add_argument("--input", required=True)
@@ -84,7 +85,7 @@ def main(argv: Sequence[str] | None = None) -> int:
         }, indent=2))
         return 0
     if args.command == "verify":
-        verify_manifest(Path(args.output))
+        verify_manifest(Path(args.output), expected_manifest_sha256=args.expected_manifest_sha256)
         print(json.dumps({"verified": True, "output": args.output}))
         return 0
     if args.command == "export-gguf":

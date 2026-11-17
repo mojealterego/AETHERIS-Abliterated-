@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "aetheris-abliteration-lab"
-version = "0.3.0"
+version = "0.3.1"
 description = "Auditable Qwen3 refusal-direction research and local model build for AETHERIS OmniFlow Ω"
 requires-python = ">=3.12,<3.15"
 dependencies = [

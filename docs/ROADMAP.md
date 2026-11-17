@@ -6,8 +6,10 @@
 - [x] F16, Q4_K_M, Q8_0 GGUF exports; CPU inference smoke tests.
 - [x] Weight comparison: 44 changed projections, 254 protected tensors unchanged; verified tied embeddings.
 - [x] Paired execution harness and research evidence gate; 51 local tests passed for the lab source.
-- [ ] Git checkout validation at exact published commit.
-- [ ] Full SHA-256 manifest of completed GGUF release artifacts.
+- [x] Clean checkout validation of import commit 30753069f2007b86eae61eef54435b62117cdad0 (51 tests; Ruff clean).
+- [x] Compute full SHA-256 for Q4_K_M and Q8_0; publish partial artifact catalog.
+- [ ] Complete full SHA-256 of F16 and independently verify all artifact digests.
+- [x] Harden manifest status, provenance and policy checks; add optional trusted digest pinning and seven regression tests (58 tests in the development checkout).
 - [ ] Independent, representative evaluation of language, factual accuracy, repetition and safety.
 - [ ] Larger checkpoint infrastructure preflight, actual construction and independent evaluation.
 - [ ] Android ARM64 build and on-device testing.
